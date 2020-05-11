@@ -1,0 +1,33 @@
+{
+  "name": "voicecontrol-server",
+  "version": "1.0.0",
+  "description": "CoronaVirus tracker api",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "gulp scripts"
+  },
+  "keywords": [
+    "corona",
+    "covid-19",
+    "nCOv",
+    "india"
+  ],
+  "author": "Divy Srivastava <dj.srivastava23@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^13.9.2",
+    "@types/socket.io": "^2.1.4",
+    "axios": "^0.19.2",
+    "body-parser": "",
+    "express": "",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "http": "",
+    "morgan": "",
+    "path": "",
+    "robotjs": "^0.6.0",
+    "socket.io": "^2.3.0",
+    "typescript": "^3.8.3"
+  }
+}

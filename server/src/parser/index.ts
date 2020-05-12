@@ -2,9 +2,9 @@ var controller = require('robotjs');
 var commandRegistry = require('bot-commander');
 
 const commands: string[] = [
-  "type",
-  "test"
+  "type"
 ]
+
 commandRegistry
   .command('test')
   .description('This is a test command')
@@ -25,9 +25,10 @@ commandRegistry
 
 function parse(line: string) {
   //const argv = line.split(/(\".+?\")|(\'.+?\')|\s+/g).filter(a => (a && a.length > 0));
-  var reformedLine = "";
+  var reformedLine = line;
   const argv = line.trim().toLowerCase().split(" ");
   if(commands.includes(argv[0].trim())) {
+    reformedLine = "";
     //var reformedLine = argv[0].trim();
     for(var i=0; i<argv.length;i++) {
       if (i == 0) {
@@ -41,7 +42,7 @@ function parse(line: string) {
       reformedLine += `${argv[i].trim()} `;
     }
   }
-  console.log(reformedLine)
   commandRegistry.parse(reformedLine)
-}
+};
+
 export default { parse };

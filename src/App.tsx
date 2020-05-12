@@ -49,6 +49,7 @@ const App: FunctionComponent = () => {
     /*
      // @ts-ignore */
     onResult: result => {
+      if(value == result) return;
       setValue(result);
       if(!timeout) {
         socket.emit("action", result); // let server handle the response

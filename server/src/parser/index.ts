@@ -17,8 +17,12 @@ commandRegistry
   .description('This is the type command')
   .action((meta, o, req) => {
     if(o) {
-      controller.typeString(o);
-      console.log('[action] Typing...');
+      try {
+        controller.typeString(o);
+        console.log('[action] Typing...');
+      } catch(e) {
+        console.log('[action] [error] Invalid key code.')
+      }
     }
   })
 

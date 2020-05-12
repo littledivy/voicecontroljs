@@ -54,7 +54,7 @@ const App: FunctionComponent = () => {
         socket.emit("action", result); // let server handle the response
         setOpen(true);
         settimeout(true);
-        setTimeout(() => { settimeout(false) }, 1000)
+        setTimeout(() => { settimeout(false) }, 3000)
       }
     }
   });

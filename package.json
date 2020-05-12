@@ -21,11 +21,12 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "serve": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:server": "tsc ./server/"
+    "start": "node ./server/dist/index.js",
+    "boot": "react-scripts build && node ./server/dist/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"

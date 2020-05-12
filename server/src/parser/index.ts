@@ -16,12 +16,21 @@ commandRegistry
   .command('type [text]')
   .description('This is the type command')
   .action((meta, o, req) => {
-    console.log(meta)
     if(o) {
       controller.typeString(o);
-      console.log('[action] Typing...')
+      console.log('[action] Typing...');
     }
   })
+
+commandRegistry
+.command('press [key]')
+.description('This is the press command')
+.action((meta, o, req) => {
+    if(o) {
+      controller.keyTap(o);
+      console.log('[action] Keypress');
+    }
+})
 
 function parse(line: string) {
   //const argv = line.split(/(\".+?\")|(\'.+?\')|\s+/g).filter(a => (a && a.length > 0));

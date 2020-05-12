@@ -37,6 +37,7 @@ const App: FunctionComponent = () => {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
   const [response, setResponse] = useState("");
+  const [timeout, settimeout] = useState(false);
 
   useEffect(() => {
     socket.on("response", (data: any) => {
@@ -49,8 +50,12 @@ const App: FunctionComponent = () => {
      // @ts-ignore */
     onResult: result => {
       setValue(result);
-      socket.emit("action", result); // let server handle the response
-      setOpen(true);
+      if(!timeout) {
+        socket.emit("action", result); // let server handle the response
+        setOpen(true);
+        settimeout(true);
+        setTimeout(() => { settimeout(false) }, 1000)
+      }
     }
   });
   const toggleMic = () => {

@@ -29,17 +29,16 @@ const darkTheme = createMuiTheme({
   },
 });
 
-const socket = io("/");
-
 const App: FunctionComponent = () => {
   const { stream, start, stop } = useMediaStream();
   const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
   const [response, setResponse] = useState("");
-  const [timeout, settimeout] = useState(false);
-
+  const [timeout, setT] = useState(false);
+  var socket: any;
   useEffect(() => {
+    socket = io("/");
     socket.on("response", (data: any) => {
       setResponse(data);
     });
@@ -50,13 +49,14 @@ const App: FunctionComponent = () => {
      // @ts-ignore */
     onResult: result => {
       if(value == result) return;
-      setValue(result);
       if(!timeout) {
+        setValue(result);
         socket.emit("action", result); // let server handle the response
         setOpen(true);
-        settimeout(true);
-        setTimeout(() => { settimeout(false) }, 3000)
+        setT(true)
+        setTimeout(function() { setT(false) }, 2000)
       }
+
     }
   });
   const toggleMic = () => {

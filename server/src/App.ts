@@ -20,7 +20,7 @@ class App {
 
   // Configure Express middleware.
   private middleware(): void {
-    this.express.use(logger('dev'));
+    this.express.use(logger('tiny'));
     this.express.use(bodyParser.json());
     this.express.use(express.static(path.join(__dirname, "../../build")))
     this.express.use(bodyParser.urlencoded({ extended: false }));

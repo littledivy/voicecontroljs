@@ -56,7 +56,6 @@ const App: FunctionComponent = () => {
         setT(true)
         setTimeout(function() { setT(false) }, 2000)
       }
-
     }
   });
   const toggleMic = () => {
@@ -66,7 +65,9 @@ const App: FunctionComponent = () => {
       setOpen(false);
     } else {
       start();
-      speechKit.listen();
+      speechKit.listen({
+        interimResults: false
+      });
     }
   };
 

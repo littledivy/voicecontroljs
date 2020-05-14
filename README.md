@@ -4,8 +4,10 @@ Voice-driven automation for your computer.
 
 ## Features
 
-- [x] Type a string using `type` command.
-- [x] Simulate key press using `press` command.
+- [x] Type a string using the `type` command.
+- [x] Simulate key press using the `press` command.
+- [x] Move cursor using the `mouse` command.
+- [x] Simulate a full screen capture using the `capture` command.
 - [x] Job priority using Kue.
 - [x] Dark theme for better UX.
 - [x] Audio visualizer (experimental).

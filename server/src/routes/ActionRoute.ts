@@ -1,8 +1,8 @@
-import {Router, Request, Response, NextFunction} from 'express';
-import axios from 'axios';
+import { Router, Request, Response, NextFunction } from "express";
+import axios from "axios";
 
 export class ActionRoute {
-  router: Router
+  router: Router;
 
   /**
    * Initialize the HeroRouter
@@ -16,9 +16,9 @@ export class ActionRoute {
    * GET all Latest data.
    */
   public getAll(req: Request, res: Response, next: NextFunction) {
-      res.json({
-        status: 'ok'
-      })
+    res.json({
+      status: "ok",
+    });
   }
 
   /**
@@ -26,9 +26,8 @@ export class ActionRoute {
    * endpoints.
    */
   init() {
-    this.router.get('/', this.getAll);
+    this.router.get("/", this.getAll);
   }
-
 }
 
 // Create the HeroRouter, and export its configured Express.Router

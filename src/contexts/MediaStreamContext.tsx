@@ -1,4 +1,11 @@
-import React, { createContext, FunctionComponent, useCallback, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  FunctionComponent,
+  useCallback,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
 
 interface MediaStreamContextValue {
   stream: MediaStream | undefined;
@@ -18,25 +25,32 @@ interface Props {
   audio: boolean;
   video: boolean;
 }
-export const MediaStreamProvider: FunctionComponent<Props> = ({ children, audio, video }) => {
+export const MediaStreamProvider: FunctionComponent<Props> = ({
+  children,
+  audio,
+  video,
+}) => {
   const [stream, setStream] = useState<MediaStream>();
 
   useEffect(() => {
     return () => {
       if (stream) {
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
       }
-    }
+    };
   }, [stream]);
 
   const start = useCallback(async () => {
-    const mediaStream = await navigator.mediaDevices.getUserMedia({ audio, video });
+    const mediaStream = await navigator.mediaDevices.getUserMedia({
+      audio,
+      video,
+    });
     setStream(mediaStream);
   }, [audio, video]);
 
   const stop = useCallback(() => {
     if (stream) {
-      stream.getTracks().forEach(track => track.stop());
+      stream.getTracks().forEach((track) => track.stop());
       setStream(undefined);
     }
   }, [stream]);
@@ -46,6 +60,6 @@ export const MediaStreamProvider: FunctionComponent<Props> = ({ children, audio,
       {children}
     </MediaStreamContext.Provider>
   );
-}
+};
 
 export default MediaStreamContext;

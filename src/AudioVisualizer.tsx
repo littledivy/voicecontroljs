@@ -1,5 +1,5 @@
-import React, { createRef, FunctionComponent, useEffect } from 'react';
-import { useAudioAnalyser } from './contexts/AudioAnalyserContext';
+import React, { createRef, FunctionComponent, useEffect } from "react";
+import { useAudioAnalyser } from "./contexts/AudioAnalyserContext";
 
 const AudioVisualiser = (props: any) => {
   const canvasRef = createRef<HTMLCanvasElement>();
@@ -20,13 +20,13 @@ const AudioVisualiser = (props: any) => {
       const canvas = canvasRef.current;
       if (canvas) {
         const { height, width } = canvas;
-        const context = canvas.getContext('2d');
+        const context = canvas.getContext("2d");
         let x = 0;
         const sliceWidth = (width * 1.0) / data.length;
 
         if (context) {
           context.lineWidth = 2;
-          context.strokeStyle = props.dark ? '#fff' : '#000';
+          context.strokeStyle = props.dark ? "#fff" : "#000";
           context.clearRect(0, 0, width, height);
 
           context.beginPath();
@@ -43,10 +43,9 @@ const AudioVisualiser = (props: any) => {
     };
     draw();
 
-
     return () => {
       cancelAnimationFrame(raf);
-    }
+    };
   }, [canvasRef, analyser]);
 
   return analyser ? <canvas width="600" height="300" ref={canvasRef} /> : null;

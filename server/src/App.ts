@@ -1,13 +1,12 @@
-import * as path from 'path';
-import * as express from 'express';
-import * as logger from 'morgan';
-import * as bodyParser from 'body-parser';
+import * as path from "path";
+import * as express from "express";
+import * as logger from "morgan";
+import * as bodyParser from "body-parser";
 
-import ActionRouter from './routes/ActionRoute';
+import ActionRouter from "./routes/ActionRoute";
 
 // Creates and configures an ExpressJS web server.
 class App {
-
   // ref to Express instance
   public express: express.Application;
 
@@ -20,9 +19,9 @@ class App {
 
   // Configure Express middleware.
   private middleware(): void {
-    this.express.use(logger('tiny'));
+    this.express.use(logger("tiny"));
     this.express.use(bodyParser.json());
-    this.express.use(express.static(path.join(__dirname, "../../build")))
+    this.express.use(express.static(path.join(__dirname, "../../build")));
     this.express.use(bodyParser.urlencoded({ extended: false }));
   }
 
@@ -33,17 +32,16 @@ class App {
      * API endpoints */
     let router = express.Router();
     // placeholder route handler
-    router.get('/', (req, res, next) => {
+    router.get("/", (req, res, next) => {
       try {
-        res.sendFile(path.join(__dirname, "../../build/index.html"))
-      } catch(e) {
-        res.send(e)
+        res.sendFile(path.join(__dirname, "../../build/index.html"));
+      } catch (e) {
+        res.send(e);
       }
     });
-    this.express.use('/', router);
-    this.express.use('/action', ActionRouter);
+    this.express.use("/", router);
+    this.express.use("/action", ActionRouter);
   }
-
 }
 
 export default new App().express;

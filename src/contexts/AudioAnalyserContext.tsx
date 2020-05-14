@@ -1,5 +1,11 @@
-import React, { createContext, FunctionComponent, useEffect, useState, useContext } from 'react';
-import { useInputAudio } from './InputAudioContext';
+import React, {
+  createContext,
+  FunctionComponent,
+  useEffect,
+  useState,
+  useContext,
+} from "react";
+import { useInputAudio } from "./InputAudioContext";
 
 interface AudioAnalyserContextValue {
   analyser: AnalyserNode | undefined;
@@ -41,14 +47,14 @@ export const AudioAnalyserProvider: FunctionComponent = ({ children }) => {
         analyser.disconnect();
         setAnalyser(undefined);
       }
-    }
-  }, [analyser, source])
+    };
+  }, [analyser, source]);
 
   return (
     <AudioAnalyserContext.Provider value={{ analyser }}>
       {children}
     </AudioAnalyserContext.Provider>
-  )
-}
+  );
+};
 
 export default AudioAnalyserContext;

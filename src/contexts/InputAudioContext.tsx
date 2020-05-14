@@ -1,5 +1,12 @@
-import React, { createContext, useContext, FunctionComponent, useEffect, useState, useCallback } from 'react'
-import { useMediaStream } from './MediaStreamContext';
+import React, {
+  createContext,
+  useContext,
+  FunctionComponent,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
+import { useMediaStream } from "./MediaStreamContext";
 
 interface InputAudioContextValue {
   audioCtx: AudioContext | undefined;
@@ -28,7 +35,7 @@ export const InputAudioProvider: FunctionComponent = ({ children }) => {
         source.disconnect();
         setSource(undefined);
       }
-    } catch(e) {
+    } catch (e) {
       console.error(e.name, e.message);
     }
   }, [context, source]);
@@ -48,14 +55,14 @@ export const InputAudioProvider: FunctionComponent = ({ children }) => {
 
     return () => {
       stop();
-    }
+    };
   }, [stream, stop]);
 
   return (
     <InputAudioContext.Provider value={{ audioCtx: context, source }}>
       {children}
     </InputAudioContext.Provider>
-  )
-}
+  );
+};
 
 export default InputAudioContext;
